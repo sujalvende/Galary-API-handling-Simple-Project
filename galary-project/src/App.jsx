@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import Card from './component/Card'
+import PageManager from './component/PageManager'
 
 function App() {
 
@@ -40,28 +41,7 @@ function App() {
         {printUserData}
       </div>
 
-      <div className='flex justify-center items-center my-5 gap-6'>
-        <button
-         className='px-5 py-3 text-sm font-semibold bg-amber-500 rounded-lg cursor-pointer active:scale-95'
-         style={{opacity: index == 1? 0.8 : 1}}
-         onClick={()=>{
-          if(index>1){
-            setIndex(index-1);
-            setUserData([])
-          }
-         }}
-         >Prev</button>
-
-        <h2 className='font-semibold'>Page {index}</h2>
-
-        <button 
-        className='px-5 py-3 text-sm font-semibold bg-amber-500 rounded-lg cursor-pointer active:scale-95'
-        onClick={()=>{
-          setIndex(index+1);
-          setUserData([])
-        }}
-        >Next</button>
-      </div>
+      <PageManager index={index} setIndex={setIndex} userData={userData} setUserData={setUserData} />
 
     </div>
     
